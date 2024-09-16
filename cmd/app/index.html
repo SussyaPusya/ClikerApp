@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="../web/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickerApp</title>
+    <style>
+        /* Стили для модального окна */
+        .modal {
+            position: fixed;
+            top: 0;
+            right: -300px; /* Начальное положение модального окна */
+            width: 300px;
+            height: 100%;
+            background-color: white;
+            text-align: center;
+            box-shadow: -2px 0 5px rgba(73, 44, 236, 0.5);
+            border-radius: 20px 20px 0px 0px;
+            transition: right 0.3s ease; /* Анимация выдвижения */
+            color: black;
+            font-family: 'JetBrains Mono';
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .modal.open {
+            right: 0; /* Положение модального окна при открытии */
+        }
+
+        .modal-content {
+            padding: 20px;
+        }
+
+        .close-button {
+            cursor: pointer;
+            font-size: 24px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <button class="button" style="position: absolute; top: 10px; left: 10px;">?</button>
+    </div>
+    <div>
+        <button class="button" style="position: absolute; top: 10px; right: 10px;" id="openModalButton">
+            <img src="../web/assets/gear.png" alt="Иконка" style="width: 50px; height: 50px;">
+        </button>
+    </div>
+    <div class="counter" id="count">0</div>
+    <div class="image">
+        <button id="ClickButton" style="cursor: pointer;">
+            <img src="../web/assets/ikon.png" alt="Картинка" style="max-width: 100%;">
+        </button>
+    </div>
+    <div>
+        <button class="button" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);">SHOP</button>
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeModalButton">&times;</span>
+            <h2>Настройки</h2>
+            <button  class="c-bob" alt="Иконка"  style="height: 80px; width: 80px; background-color: blue;border: none;border-radius: 12px;margin-right: 199px;position: absolute; top: 150px; right: 10px;">
+                <img class="image" src="../web/assets/sound-svgrepo-com.svg" style="width: 50px; height: 50px">
+            </button>
+            <p style="margin-bottom: 100px;">Музыка</p>
+            
+        </div>
+    </div>
+
+    <script src="../web/coproscript.js"></script>
+    
+    
+</body>
+</html>
