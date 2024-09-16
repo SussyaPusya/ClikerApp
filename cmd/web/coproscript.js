@@ -1,10 +1,10 @@
 document.getElementById("ClickButton").addEventListener("click", function() {
     fetch("http://localhost:3000/endpoint", {
-        method: "POST", // или "GET" в зависимости от вашего сервера
+        method: "POST", 
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ points: 1 }) // данные, которые вы хотите отправить
+        body: JSON.stringify({ points: 1 }) 
     })
     .then(response => response.json())
     .then(data => {
@@ -44,4 +44,20 @@ window.addEventListener('click', function(event) {
         modal.classList.remove('open');
     }
 });
+
+
+const cnopka = document.getElementById('sound-button');
+const icon = document.getElementById('icon');
+
+let isPlaying = false;
+
+function SwitchIcon(){
+    if (isPlaying) {
+        icon.src = '../web/assets/sound-svgrepo-com.svg';
+    } else {
+        icon.src = '../web/assets/sound-off-svgrepo-com.svg';
+    }
+    isPlaying = !isPlaying; 
+}
+cnopka.addEventListener('click', SwitchIcon);
 

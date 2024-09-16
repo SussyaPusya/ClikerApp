@@ -27,5 +27,3 @@ func main() {
 	fmt.Println("Server has Started")
 	http.ListenAndServe(":"+port, mux)
 }
-
-//
