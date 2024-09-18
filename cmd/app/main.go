@@ -22,7 +22,8 @@ func main() {
 	fsWeb := http.FileServer(http.Dir("./cmd/web"))
 	mux.Handle("/web/", http.StripPrefix("/web/", fsWeb))
 
-	mux.HandleFunc("/endpoint", handlers.HandlerClickevent) // Используем mux.HandleFunc
+	mux.HandleFunc("/endpoint", handlers.HandlerClickevent)
+	http.HandleFunc("/endpoint", handlers.CreateSession)
 
 	fmt.Println("Server has Started")
 	http.ListenAndServe(":"+port, mux)

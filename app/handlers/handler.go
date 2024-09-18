@@ -31,4 +31,5 @@ func HandlerClickevent(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Метод не разрешен", http.StatusMethodNotAllowed)
 	}
 	logic.Point(PointData)
+
 }

@@ -23,3 +23,6 @@ func Point(arr []byte) {
 	PointTab += count
 	fmt.Println(PointTab)
 }
+func GetPointTab() int {
+	return PointTab
+}
