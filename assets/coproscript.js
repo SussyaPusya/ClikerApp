@@ -1,4 +1,7 @@
+let count = 0;
 
+const numberElement = document.getElementById("count");
+const button = document.getElementById('ClickButton');
 
 document.getElementById("ClickButton").addEventListener("click", function() {
     fetch("http://localhost:3000/endpoint", {
@@ -8,21 +11,27 @@ document.getElementById("ClickButton").addEventListener("click", function() {
         },
         body: JSON.stringify({ points: 1 }) 
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Ошибка при получении данных');
+          }
+          return response.json(); // Преобразуем ответ в JSON
+        })
     .then(data => {
-        console.log("Успех:", data);
+        count = data.Score
+        console.log("Успех данные получены:", data);
     })
     .catch((error) => {
         console.error("Ошибка:", error);
     });
+   
     
+    }
     
-});
+);
 
-const numberElement = document.getElementById('count');
-const button = document.getElementById('ClickButton');
 
-let count = 0;
+
 
 button.addEventListener('click', () => {
     count++;
