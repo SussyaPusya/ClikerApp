@@ -1,4 +1,7 @@
+let count = 0;
 
+const numberElement = document.getElementById("count");
+const button = document.getElementById('ClickButton');
 
 document.getElementById("ClickButton").addEventListener("click", function() {
     fetch("http://localhost:3000/endpoint", {
@@ -8,21 +11,27 @@ document.getElementById("ClickButton").addEventListener("click", function() {
         },
         body: JSON.stringify({ points: 1 }) 
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Ошибка при получении данных');
+          }
+          return response.json(); // Преобразуем ответ в JSON
+        })
     .then(data => {
-        console.log("Успех:", data);
+        count = data.Score
+        console.log("Успех данные получены:", data);
     })
     .catch((error) => {
         console.error("Ошибка:", error);
     });
+   
     
+    }
     
-});
+);
 
-const numberElement = document.getElementById('count');
-const button = document.getElementById('ClickButton');
 
-let count = 0;
+
 
 button.addEventListener('click', () => {
     count++;
@@ -57,18 +66,18 @@ let isPlaying = false;
 function SwitchIcon(){
     if (isPlaying) {
         music.volume = 0.1
-        icon.src = '../web/assets/sound-svgrepo-com.svg';
+        icon.src = '../assets/sound-svgrepo-com.svg';
     } else {
         music.volume = 0
-        icon.src = '../web/assets/sound-off-svgrepo-com.svg';
+        icon.src = '../assets/sound-off-svgrepo-com.svg';
     }
     isPlaying = !isPlaying; 
 }
 cnopka.addEventListener('click', SwitchIcon);
 const tracks = [
-    '../web/assets/Disfigure - Blank.mp3',
-    '../web/assets/DifferentHeaven - MyHeart.mp3',
-    '../web/assets/Elektronomia - SkyHigh.mp3',
+    '../assets/Disfigure - Blank.mp3',
+    '../assets/DifferentHeaven - MyHeart.mp3',
+    '../assets/Elektronomia - SkyHigh.mp3',
     ];
 let x = 0;
 
