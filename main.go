@@ -34,7 +34,7 @@ func main() {
 		c.File("html/login.html")
 	})
 
-	router.POST("/login", func(ctx *gin.Context) {
+	router.POST("/", func(ctx *gin.Context) {
 		username, password := ctx.PostForm("username"), ctx.PostForm("password")
 
 		fmt.Println(username, password)
